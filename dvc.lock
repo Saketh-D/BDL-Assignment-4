@@ -9,48 +9,48 @@ stages:
       size: 2868
     params:
       params.yaml:
-        n_locs: 1
+        n_locs: 2
         year: 2011
     outs:
     - path: data/
       hash: md5
-      md5: 18288db538d9ef0f40a496e3cadad179.dir
-      size: 8202197
-      nfiles: 1
+      md5: 268f7aa2ab9f176f382a449713faf03a.dir
+      size: 15374943
+      nfiles: 2
   prepare:
     cmd: python3 prepare.py
     deps:
     - path: data/
       hash: md5
-      md5: 18288db538d9ef0f40a496e3cadad179.dir
-      size: 8202197
-      nfiles: 1
+      md5: 268f7aa2ab9f176f382a449713faf03a.dir
+      size: 15374943
+      nfiles: 2
     outs:
     - path: prepare_output.txt
       hash: md5
-      md5: 07b82ebb8e12475902f6c9a48d01fa68
-      size: 48
+      md5: 2a4c8dfd65b2d54ff6b7eb2f536c6982
+      size: 102
   process:
     cmd: python3 process.py
     deps:
     - path: data/
       hash: md5
-      md5: 18288db538d9ef0f40a496e3cadad179.dir
-      size: 8202197
-      nfiles: 1
+      md5: 268f7aa2ab9f176f382a449713faf03a.dir
+      size: 15374943
+      nfiles: 2
     outs:
     - path: process_output.txt
       hash: md5
-      md5: 6096d56da7588a7fc1319ea62d3bc402
-      size: 209
+      md5: 24e4425841a94986c017462391a8d83d
+      size: 429
   evaluate:
     cmd: python3 evaluate.py
     deps:
     - path: prepare_output.txt
       hash: md5
-      md5: 07b82ebb8e12475902f6c9a48d01fa68
-      size: 48
+      md5: 2a4c8dfd65b2d54ff6b7eb2f536c6982
+      size: 102
     - path: process_output.txt
       hash: md5
-      md5: 6096d56da7588a7fc1319ea62d3bc402
-      size: 209
+      md5: 24e4425841a94986c017462391a8d83d
+      size: 429
