@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  download:
+    cmd: python3 download.py
+    deps:
+    - path: download.py
+      hash: md5
+      md5: 28224dcc9727d262458fcb07bba3da7d
+      size: 2868
+    params:
+      params.yaml:
+        n_locs: 1
+        year: 2011
+    outs:
+    - path: data/
+      hash: md5
+      md5: 18288db538d9ef0f40a496e3cadad179.dir
+      size: 8202197
+      nfiles: 1
+  prepare:
+    cmd: python3 prepare.py
+    deps:
+    - path: data/
+      hash: md5
+      md5: 18288db538d9ef0f40a496e3cadad179.dir
+      size: 8202197
+      nfiles: 1
+    outs:
+    - path: prepare_output.txt
+      hash: md5
+      md5: 07b82ebb8e12475902f6c9a48d01fa68
+      size: 48
+  process:
+    cmd: python3 process.py
+    deps:
+    - path: data/
+      hash: md5
+      md5: 18288db538d9ef0f40a496e3cadad179.dir
+      size: 8202197
+      nfiles: 1
+    outs:
+    - path: process_output.txt
+      hash: md5
+      md5: 6096d56da7588a7fc1319ea62d3bc402
+      size: 209
+  evaluate:
+    cmd: python3 evaluate.py
+    deps:
+    - path: prepare_output.txt
+      hash: md5
+      md5: 07b82ebb8e12475902f6c9a48d01fa68
+      size: 48
+    - path: process_output.txt
+      hash: md5
+      md5: 6096d56da7588a7fc1319ea62d3bc402
+      size: 209
