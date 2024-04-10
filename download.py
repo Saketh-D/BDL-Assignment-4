@@ -17,7 +17,7 @@ with open(file_path, 'r') as file:
 url = "https://www.ncei.noaa.gov/data/local-climatological-data/access/" + str(params['year'])
 
 # Directory where you want to save the downloaded file
-output_file = "/home/saketh/Desktop/assignment4/page.html"
+output_file = os.getcwd() + "/page.html"
 
 # Use os.system() to execute wget command
 command = f"wget -O {output_file} {url} -q"
@@ -92,7 +92,7 @@ for i in range(len(csv_links)):
 
 for i in range(len(files_links)):
     url = "https://www.ncei.noaa.gov/data/local-climatological-data/access/" + str(params['year']) + "/" + files_links[i] 
-    output_file = "/home/saketh/Desktop/assignment4/data/" + files_links[i]
+    output_file = os.getcwd() + "/data/" + files_links[i]
     command = f"wget -O {output_file} {url} -q"
     os.system(command)
 
